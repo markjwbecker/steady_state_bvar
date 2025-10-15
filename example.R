@@ -132,7 +132,7 @@ par(mfrow = c(2, 1))
 
 for (i in 1:ncol(Y)) {
   plot(time_hist, Y[, i], type = "l", col = "black", lwd = 2,
-       ylab = colnames(Y)[i], xlab = "Time",
+       ylab = "percent (%)", xlab = "Time",
        main = paste(colnames(Y)[i]),
        ylim = range(c(Y[, i], Y_pred_lower[, i], Y_pred_upper[, i])),
        xlim = c(1987,2035))
