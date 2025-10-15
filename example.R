@@ -103,7 +103,7 @@ Gamma_d_pr_cov
 library(rstan)
 rstan_options(auto_write = TRUE)
 options(mc.cores=parallel::detectCores())
-iter <- 10000
+iter <- 4000
 warmup <- iter/2
 
 fit <- stan(file="newSSBVAR.stan",
@@ -134,7 +134,8 @@ for (i in 1:ncol(Y)) {
   plot(time_hist, Y[, i], type = "l", col = "black", lwd = 2,
        ylab = colnames(Y)[i], xlab = "Time",
        main = paste(colnames(Y)[i]),
-       ylim = range(c(Y[, i], Y_pred_lower[, i], Y_pred_upper[, i])))
+       ylim = range(c(Y[, i], Y_pred_lower[, i], Y_pred_upper[, i])),
+       xlim = c(1987,2035))
   
   lines(time_fore, Y_pred_mean[, i], col = "blue", lwd = 2)
   lines(time_fore, Y_pred_lower[, i], col = "blue", lty = 2)
